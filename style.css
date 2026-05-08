@@ -1,0 +1,1216 @@
+/* ========================
+   ROOT VARIABLES (СВЕТЛАЯ ТЕМА)
+   ======================== */
+:root {
+    --primary: #0f67b1;
+    --primary-dark: #0c4e6e;
+    --primary-light: #3b82f6;
+    --success: #10b981;
+    --warning: #f59e0b;
+    --danger: #ef4444;
+    --bg-gradient-start: #e0f2fe;
+    --bg-gradient-end: #99f6e4;
+    --card-bg: rgba(255, 255, 255, 0.96);
+    --text-dark: #0f172a;
+    --text-gray: #475569;
+    --border-light: #cbd5e1;
+    --shadow-sm: 0 10px 25px -5px rgba(0, 0, 0, 0.08);
+    --shadow-md: 0 20px 35px -10px rgba(0, 0, 0, 0.12);
+    --shadow-lg: 0 25px 45px -12px rgba(0, 0, 0, 0.25);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+}
+
+body {
+    background: linear-gradient(135deg, var(--bg-gradient-start) 0%, var(--bg-gradient-end) 100%);
+    font-family: 'Inter', 'Segoe UI', Roboto, -apple-system, BlinkMacSystemFont, sans-serif;
+    min-height: 100vh;
+    padding: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+/* Декоративные круги на фоне */
+body::before {
+    content: '';
+    position: fixed;
+    top: -20%;
+    right: -10%;
+    width: 60%;
+    height: 60%;
+    background: radial-gradient(circle, rgba(59,130,246,0.15) 0%, transparent 70%);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 0;
+}
+
+body::after {
+    content: '';
+    position: fixed;
+    bottom: -20%;
+    left: -10%;
+    width: 60%;
+    height: 60%;
+    background: radial-gradient(circle, rgba(16,185,129,0.1) 0%, transparent 70%);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* ========================
+   MAIN CARD (GLASSMORPHISM)
+   ======================== */
+.app-container {
+    max-width: 550px;
+    width: 100%;
+    margin: 0 auto;
+    background: var(--card-bg);
+    backdrop-filter: blur(10px);
+    border-radius: 2.5rem;
+    box-shadow: var(--shadow-lg);
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+    z-index: 1;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.app-container:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 30px 50px -15px rgba(0, 0, 0, 0.3);
+}
+
+/* ========================
+   HEADER (Шапка с градиентом)
+   ======================== */
+.header {
+    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+    padding: 1.8rem 1.5rem;
+    color: white;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.header::before {
+    content: '💧';
+    position: absolute;
+    font-size: 8rem;
+    opacity: 0.08;
+    bottom: -20px;
+    right: -20px;
+    pointer-events: none;
+}
+
+.header h1 {
+    font-size: 2rem;
+    letter-spacing: -0.5px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    position: relative;
+}
+
+.header h1 span {
+    font-size: 2.2rem;
+    animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-5px); }
+}
+
+.sub {
+    font-size: 0.85rem;
+    opacity: 0.9;
+    margin-top: 10px;
+    font-weight: 500;
+}
+
+/* ========================
+   ДАТА И СБРОС
+   ======================== */
+.date-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: white;
+    padding: 14px 22px;
+    border-bottom: 1px solid var(--border-light);
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.date-display {
+    font-weight: 600;
+    background: linear-gradient(135deg, #f1f5f9, #e2e8f0);
+    padding: 6px 16px;
+    border-radius: 40px;
+    font-size: 0.85rem;
+    color: var(--text-dark);
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.reset-btn {
+    background: linear-gradient(135deg, #fee2e2, #fecaca);
+    border: none;
+    color: var(--danger);
+    font-weight: 600;
+    font-size: 0.8rem;
+    cursor: pointer;
+    padding: 6px 16px;
+    border-radius: 40px;
+    transition: all 0.3s ease;
+}
+
+.reset-btn:hover {
+    transform: scale(1.02);
+    box-shadow: 0 2px 8px rgba(239, 68, 68, 0.2);
+}
+
+.reset-btn:active {
+    transform: scale(0.96);
+}
+
+/* ========================
+   СТАТИСТИКА (КАРТОЧКА ПРОГРЕССА)
+   ======================== */
+.stats-card {
+    background: white;
+    margin: 1.4rem 1.2rem 0.8rem 1.2rem;
+    border-radius: 2rem;
+    padding: 1.3rem 1.2rem;
+    box-shadow: var(--shadow-sm);
+    transition: all 0.3s ease;
+}
+
+.stats-card:hover {
+    box-shadow: var(--shadow-md);
+}
+
+.goal-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 1rem;
+    flex-wrap: wrap;
+    cursor: pointer;
+    padding: 6px 0;
+    border-radius: 60px;
+    transition: background 0.2s;
+}
+
+.goal-row:active {
+    background: #f8fafc;
+}
+
+.goal-label {
+    font-weight: 700;
+    color: var(--text-dark);
+    font-size: 0.95rem;
+}
+
+.goal-value {
+    background: linear-gradient(135deg, #e6f7ff, #d0ebff);
+    padding: 5px 16px;
+    border-radius: 60px;
+    font-weight: 700;
+    color: var(--primary);
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.goal-value:hover {
+    transform: scale(1.02);
+    box-shadow: 0 2px 8px rgba(15, 103, 177, 0.2);
+}
+
+.progress-section {
+    margin: 1.2rem 0;
+}
+
+.progress-numbers {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-bottom: 10px;
+    color: var(--text-gray);
+}
+
+.progress-bar-bg {
+    background: #e2e8f0;
+    border-radius: 60px;
+    height: 28px;
+    overflow: hidden;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.06);
+}
+
+.progress-fill {
+    width: 0%;
+    height: 100%;
+    background: linear-gradient(90deg, var(--primary-light), var(--primary));
+    border-radius: 60px;
+    transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding-right: 12px;
+    color: white;
+    font-size: 0.75rem;
+    font-weight: bold;
+    line-height: 28px;
+    position: relative;
+    overflow: hidden;
+}
+
+.progress-fill::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+    animation: shimmer 2s infinite;
+}
+
+@keyframes shimmer {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+}
+
+.consumed-summary {
+    text-align: center;
+    margin-top: 1.2rem;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--primary-dark);
+    background: #f0f9ff;
+    padding: 8px;
+    border-radius: 60px;
+}
+
+/* Анимация при достижении цели */
+@keyframes celebrate {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+}
+
+.progress-fill[data-celebrate="true"] {
+    animation: celebrate 0.5s ease-in-out;
+}
+
+/* ========================
+   СТАТУС ГИДРАТАЦИИ
+   ======================== */
+.hydration-status {
+    background: linear-gradient(135deg, #f8fafc, #f1f5f9);
+    border-radius: 1.5rem;
+    padding: 1rem 1.2rem;
+    margin: 0 1.2rem 1.2rem 1.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-weight: 600;
+    border: 1px solid rgba(15, 103, 177, 0.2);
+    transition: all 0.3s ease;
+}
+
+.hydration-status:hover {
+    transform: translateX(5px);
+    border-color: var(--primary-light);
+}
+
+.status-text {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.status-emoji {
+    font-size: 2rem;
+    transition: transform 0.3s ease;
+}
+
+.hydration-status:hover .status-emoji {
+    transform: scale(1.1);
+}
+
+#statusMessage {
+    font-size: 0.9rem;
+    color: var(--text-dark);
+    font-weight: 500;
+}
+
+#adviceIcon {
+    font-size: 1.6rem;
+    opacity: 0.8;
+}
+
+/* ========================
+   БЛОК ДОБАВЛЕНИЯ ВОДЫ
+   ======================== */
+.add-section {
+    background: white;
+    margin: 0.5rem 1.2rem 1.2rem 1.2rem;
+    border-radius: 2rem;
+    padding: 1.2rem;
+    box-shadow: var(--shadow-sm);
+}
+
+.add-title {
+    font-weight: 700;
+    margin-bottom: 18px;
+    color: var(--text-dark);
+    font-size: 1rem;
+    text-align: center;
+}
+
+.quick-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    justify-content: center;
+    margin-bottom: 24px;
+}
+
+.water-btn {
+    background: linear-gradient(135deg, #eef2ff, #e0e7ff);
+    border: none;
+    padding: 12px 20px;
+    border-radius: 60px;
+    font-weight: 700;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    color: var(--primary);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+    min-width: 85px;
+    position: relative;
+    overflow: hidden;
+}
+
+.water-btn::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(59, 130, 246, 0.2);
+    transition: width 0.5s, height 0.5s;
+    transform: translate(-50%, -50%);
+}
+
+.water-btn:active::before {
+    width: 200px;
+    height: 200px;
+}
+
+.water-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(15, 103, 177, 0.2);
+}
+
+.water-btn:active {
+    transform: translateY(0px);
+}
+
+.custom-add {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.custom-input {
+    border: 2px solid var(--border-light);
+    border-radius: 60px;
+    padding: 12px 18px;
+    font-size: 1rem;
+    width: 140px;
+    text-align: center;
+    font-weight: 600;
+    outline: none;
+    transition: all 0.3s ease;
+    background: white;
+}
+
+.custom-input:focus {
+    border-color: var(--primary-light);
+    box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.1);
+    transform: scale(1.02);
+}
+
+.add-custom-btn {
+    background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+    color: white;
+    border: none;
+    padding: 12px 28px;
+    border-radius: 60px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 6px rgba(15, 103, 177, 0.3);
+}
+
+.add-custom-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(15, 103, 177, 0.4);
+}
+
+.add-custom-btn:active {
+    transform: translateY(0px);
+}
+
+/* ========================
+   ИСТОРИЯ
+   ======================== */
+.history-section {
+    background: white;
+    margin: 0 1.2rem 1.5rem 1.2rem;
+    border-radius: 2rem;
+    padding: 1rem 1.2rem;
+    max-height: 300px;
+    overflow-y: auto;
+    box-shadow: var(--shadow-sm);
+}
+
+.history-section::-webkit-scrollbar {
+    width: 6px;
+}
+
+.history-section::-webkit-scrollbar-track {
+    background: #e2e8f0;
+    border-radius: 10px;
+}
+
+.history-section::-webkit-scrollbar-thumb {
+    background: var(--primary-light);
+    border-radius: 10px;
+}
+
+.history-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 12px;
+    border-bottom: 2px solid #e2e8f0;
+    margin-bottom: 16px;
+    font-weight: 700;
+    color: var(--text-dark);
+}
+
+.clear-log-btn {
+    background: none;
+    border: none;
+    font-size: 0.75rem;
+    color: var(--text-gray);
+    cursor: pointer;
+    padding: 5px 12px;
+    border-radius: 30px;
+    transition: all 0.2s;
+}
+
+.clear-log-btn:hover {
+    background: #f1f5f9;
+    color: var(--danger);
+    transform: scale(1.02);
+}
+
+.history-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.log-item {
+    background: linear-gradient(135deg, #f9f9ff, #f3f4f6);
+    padding: 10px 16px;
+    border-radius: 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.9rem;
+    border-left: 4px solid var(--primary-light);
+    transition: all 0.3s ease;
+}
+
+.log-item:hover {
+    transform: translateX(5px);
+    background: white;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.log-amount {
+    font-weight: 800;
+    color: var(--primary);
+    margin-right: 8px;
+    font-size: 1rem;
+}
+
+.log-time {
+    color: var(--text-gray);
+    font-size: 0.7rem;
+}
+
+.delete-log {
+    background: none;
+    border: none;
+    font-size: 1.2rem;
+    cursor: pointer;
+    color: #94a3b8;
+    padding: 0 8px;
+    transition: all 0.2s;
+}
+
+.delete-log:hover {
+    color: var(--danger);
+    transform: scale(1.1);
+}
+
+.empty-log {
+    text-align: center;
+    color: var(--text-gray);
+    padding: 1.5rem;
+    font-size: 0.9rem;
+}
+
+/* ========================
+   ФУТЕР
+   ======================== */
+footer {
+    text-align: center;
+    font-size: 0.7rem;
+    padding: 1.2rem;
+    color: var(--text-gray);
+    background: #f8fafc;
+    border-top: 1px solid #dce3ec;
+}
+
+/* ========================
+   АДАПТАЦИЯ (МОБИЛЬНЫЕ)
+   ======================== */
+@media (max-width: 480px) {
+    body {
+        padding: 0.8rem;
+    }
+    
+    .header h1 {
+        font-size: 1.7rem;
+    }
+    
+    .quick-buttons {
+        gap: 10px;
+    }
+    
+    .water-btn {
+        padding: 10px 16px;
+        font-size: 0.9rem;
+        min-width: 75px;
+    }
+    
+    .custom-input {
+        width: 120px;
+        padding: 10px 14px;
+    }
+    
+    .add-custom-btn {
+        padding: 10px 22px;
+    }
+    
+    .stats-card, .add-section, .hydration-status, .history-section {
+        margin-left: 0.8rem;
+        margin-right: 0.8rem;
+    }
+}
+
+@media (max-width: 380px) {
+    .water-btn {
+        padding: 8px 12px;
+        font-size: 0.85rem;
+        min-width: 65px;
+    }
+    
+    .custom-input {
+        width: 100px;
+    }
+}
+
+/* ========================
+   НОВЫЕ СТИЛИ ДЛЯ ТЁМНОЙ ТЕМЫ, СТАТИСТИКИ И Т.Д.
+   ======================== */
+
+/* Тёмная тема */
+body.dark-theme {
+    --bg-gradient-start: #0f172a;
+    --bg-gradient-end: #1e293b;
+    --card-bg: rgba(30, 41, 59, 0.96);
+    --text-dark: #f1f5f9;
+    --text-gray: #cbd5e1;
+    --border-light: #334155;
+}
+
+body.dark-theme .stats-card,
+body.dark-theme .add-section,
+body.dark-theme .history-section,
+body.dark-theme .stats-panel {
+    background: #1e293b;
+    color: #e2e8f0;
+}
+
+body.dark-theme .water-btn {
+    background: #334155;
+    color: #60a5fa;
+}
+
+body.dark-theme .custom-input {
+    background: #0f172a;
+    color: white;
+    border-color: #475569;
+}
+
+/* Вкладки */
+.tabs {
+    display: flex;
+    background: white;
+    border-bottom: 2px solid #e2e8f0;
+    gap: 5px;
+    padding: 0 10px;
+}
+
+.tab-btn {
+    flex: 1;
+    padding: 12px;
+    background: none;
+    border: none;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+    color: #64748b;
+    border-radius: 12px 12px 0 0;
+}
+
+.tab-btn.active {
+    color: #0f67b1;
+    border-bottom: 3px solid #0f67b1;
+    background: #f8fafc;
+}
+
+.tab-content {
+    display: none;
+    animation: fadeIn 0.3s;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+/* Статистика */
+.stats-panel {
+    background: white;
+    margin: 1rem;
+    padding: 1.2rem;
+    border-radius: 1.5rem;
+    box-shadow: var(--shadow-sm);
+}
+
+#waterChart {
+    max-width: 100%;
+    height: auto;
+    margin: 1rem 0;
+}
+
+.motivation-card {
+    background: linear-gradient(135deg, #dbeafe, #e0e7ff);
+    padding: 1rem;
+    border-radius: 1rem;
+    margin: 1rem 0;
+    text-align: center;
+    font-weight: 600;
+}
+
+.stats-info {
+    background: #f8fafc;
+    padding: 1rem;
+    border-radius: 1rem;
+}
+
+.stats-info p {
+    margin: 8px 0;
+}
+
+/* Достижения */
+.achievements-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 1rem;
+    padding: 1rem;
+}
+
+.achievement-card {
+    background: linear-gradient(135deg, #fef3c7, #fde68a);
+    padding: 1rem;
+    border-radius: 1rem;
+    text-align: center;
+    transition: all 0.3s;
+    cursor: pointer;
+}
+
+.achievement-card.locked {
+    background: linear-gradient(135deg, #e2e8f0, #cbd5e1);
+    opacity: 0.6;
+    filter: grayscale(0.3);
+}
+
+.achievement-card.unlocked {
+    background: linear-gradient(135deg, #fef3c7, #f59e0b);
+    animation: pulse 0.5s;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+.achievement-emoji {
+    font-size: 2.5rem;
+}
+
+.achievement-title {
+    font-weight: bold;
+    margin: 8px 0;
+}
+
+.achievement-desc {
+    font-size: 0.75rem;
+    color: #475569;
+}
+
+/* Настройки */
+.settings-panel {
+    padding: 1rem;
+}
+
+.setting-item {
+    background: white;
+    margin-bottom: 1.5rem;
+    padding: 1rem;
+    border-radius: 1rem;
+    box-shadow: var(--shadow-sm);
+}
+
+.setting-item label {
+    display: block;
+    font-weight: 700;
+    margin-bottom: 10px;
+    color: #1e293b;
+}
+
+.setting-btn {
+    background: #0f67b1;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 60px;
+    cursor: pointer;
+    margin: 5px;
+    transition: 0.2s;
+}
+
+.setting-btn:hover {
+    transform: translateY(-2px);
+}
+
+.danger-btn {
+    background: #ef4444;
+}
+
+.small-btn {
+    background: #10b981;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 60px;
+    cursor: pointer;
+    margin-top: 8px;
+}
+
+.reminder-times {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-top: 10px;
+}
+
+.reminder-times input {
+    padding: 8px;
+    border-radius: 60px;
+    border: 1px solid #cbd5e1;
+}
+
+/* Тёмная тема дополнения */
+body.dark-theme .tab-btn {
+    color: #94a3b8;
+}
+
+body.dark-theme .tab-btn.active {
+    color: #60a5fa;
+    background: #1e293b;
+}
+
+body.dark-theme .setting-item {
+    background: #1e293b;
+}
+
+body.dark-theme .setting-item label {
+    color: #e2e8f0;
+}
+
+body.dark-theme .stats-info {
+    background: #0f172a;
+}
+
+/* Анимации */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Кнопка переключения темы */
+.theme-toggle {
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    background: rgba(255,255,255,0.2);
+    border: none;
+    font-size: 1.3rem;
+    cursor: pointer;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(4px);
+}
+
+body.dark-theme .theme-toggle {
+    background: rgba(0,0,0,0.3);
+}
+
+/* ========================
+   ФИКСЫ ДЛЯ ТЁМНОЙ ТЕМЫ — УЛУЧШЕННАЯ ВИДИМОСТЬ
+   ======================== */
+
+/* Основные тексты в тёмной теме */
+body.dark-theme {
+    color: #f1f5f9;
+}
+
+body.dark-theme .date-bar {
+    background: #1e293b;
+    border-bottom-color: #334155;
+}
+
+body.dark-theme .date-display {
+    background: #334155;
+    color: #f1f5f9 !important;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.3);
+}
+
+body.dark-theme .reset-btn {
+    background: #450a0a;
+    color: #f87171;
+}
+
+body.dark-theme .stats-card {
+    background: #1e293b;
+    color: #e2e8f0;
+}
+
+body.dark-theme .goal-label {
+    color: #cbd5e1;
+}
+
+body.dark-theme .goal-value {
+    background: #0f67b1;
+    color: white !important;
+}
+
+body.dark-theme .progress-numbers {
+    color: #cbd5e1;
+}
+
+body.dark-theme .progress-numbers strong {
+    color: #60a5fa;
+}
+
+body.dark-theme .consumed-summary {
+    background: #0f172a;
+    color: #94a3f8;
+}
+
+body.dark-theme .hydration-status {
+    background: #0f172a;
+    border-color: #334155;
+}
+
+body.dark-theme #statusMessage {
+    color: #e2e8f0;
+}
+
+body.dark-theme .add-section {
+    background: #1e293b;
+}
+
+body.dark-theme .add-title {
+    color: #e2e8f0;
+}
+
+body.dark-theme .custom-input {
+    background: #0f172a;
+    color: #f1f5f9;
+    border-color: #475569;
+}
+
+body.dark-theme .custom-input::placeholder {
+    color: #64748b;
+}
+
+body.dark-theme .history-section {
+    background: #1e293b;
+}
+
+body.dark-theme .history-header {
+    color: #e2e8f0;
+    border-bottom-color: #334155;
+}
+
+body.dark-theme .log-item {
+    background: #0f172a;
+    border-left-color: #3b82f6;
+}
+
+body.dark-theme .log-item:hover {
+    background: #1e293b;
+}
+
+body.dark-theme .log-amount {
+    color: #60a5fa;
+}
+
+body.dark-theme .log-time {
+    color: #94a3b8;
+}
+
+body.dark-theme .empty-log {
+    color: #64748b;
+}
+
+body.dark-theme footer {
+    background: #0f172a;
+    color: #64748b;
+    border-top-color: #1e293b;
+}
+
+/* Вкладки в тёмной теме */
+body.dark-theme .tabs {
+    background: #1e293b;
+    border-bottom-color: #334155;
+}
+
+body.dark-theme .tab-btn {
+    color: #94a3b8;
+}
+
+body.dark-theme .tab-btn.active {
+    color: #60a5fa;
+    background: #0f172a;
+    border-bottom-color: #60a5fa;
+}
+
+/* Статистика в тёмной теме */
+body.dark-theme .stats-panel {
+    background: #1e293b;
+}
+
+body.dark-theme .stats-panel h3 {
+    color: #e2e8f0;
+}
+
+body.dark-theme .motivation-card {
+    background: linear-gradient(135deg, #1e3a8a, #1e40af);
+    color: #f1f5f9;
+}
+
+body.dark-theme .stats-info {
+    background: #0f172a;
+    color: #cbd5e1;
+}
+
+body.dark-theme .stats-info p {
+    color: #cbd5e1;
+}
+
+body.dark-theme .stats-info strong {
+    color: #60a5fa;
+}
+
+/* Настройки в тёмной теме */
+body.dark-theme .setting-item {
+    background: #1e293b;
+}
+
+body.dark-theme .setting-item label {
+    color: #e2e8f0;
+}
+
+body.dark-theme .reminder-times input {
+    background: #0f172a;
+    color: #f1f5f9;
+    border-color: #475569;
+}
+
+/* Достижения в тёмной теме */
+body.dark-theme .achievements-grid {
+    background: #1e293b;
+}
+
+body.dark-theme .achievement-card.locked {
+    background: linear-gradient(135deg, #1e293b, #334155);
+    color: #94a3b8;
+}
+
+body.dark-theme .achievement-card.unlocked {
+    background: linear-gradient(135deg, #1e3a8a, #312e81);
+    color: #fef3c7;
+}
+
+body.dark-theme .achievement-desc {
+    color: #cbd5e1;
+}
+
+/* График Chart.js в тёмной теме */
+body.dark-theme canvas {
+    filter: brightness(0.9);
+}
+
+/* Дополнительные элементы интерфейса */
+body.dark-theme .small-btn {
+    background: #059669;
+}
+
+body.dark-theme .danger-btn {
+    background: #dc2626;
+}
+
+body.dark-theme .setting-btn {
+    background: #0f67b1;
+}
+
+body.dark-theme .setting-btn:hover {
+    background: #1d4ed8;
+}
+
+/* Скроллбар в тёмной теме */
+body.dark-theme .history-section::-webkit-scrollbar-track {
+    background: #0f172a;
+}
+
+body.dark-theme .history-section::-webkit-scrollbar-thumb {
+    background: #475569;
+}
+
+body.dark-theme .history-section::-webkit-scrollbar-thumb:hover {
+    background: #64748b;
+}
+
+/* Кнопка переключения темы */
+.theme-toggle {
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    background: rgba(255,255,255,0.2);
+    border: none;
+    font-size: 1.3rem;
+    cursor: pointer;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(4px);
+    transition: all 0.3s ease;
+}
+
+.theme-toggle:hover {
+    transform: scale(1.1);
+}
+
+body.dark-theme .theme-toggle {
+    background: rgba(0,0,0,0.5);
+    color: #fbbf24;
+}
+
+/* Дополнительно: улучшенная видимость всех текстов */
+body.dark-theme h1,
+body.dark-theme h2,
+body.dark-theme h3,
+body.dark-theme .header h1,
+body.dark-theme .header .sub {
+    color: white !important;
+}
+
+body.dark-theme .goal-value {
+    color: white !important;
+    background: #0f67b1 !important;
+}
+
+body.dark-theme #consumedMl,
+body.dark-theme #remainingMl {
+    color: #60a5fa;
+}
+
+body.dark-theme .progress-fill {
+    background: linear-gradient(90deg, #3b82f6, #2563eb);
+}
+
+body.dark-theme .water-btn {
+    background: #334155;
+    color: #60a5fa;
+}
+
+body.dark-theme .water-btn:hover {
+    background: #475569;
+    color: #93c5fd;
+}
+
+body.dark-theme .add-custom-btn {
+    background: linear-gradient(135deg, #0f67b1, #1e3a8a);
+    color: white;
+}
+
+body.dark-theme .custom-input:focus {
+    border-color: #60a5fa;
+    box-shadow: 0 0 0 3px rgba(96, 165, 250, 0.2);
+}
